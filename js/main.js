@@ -17,7 +17,7 @@ require.config({
 });
 
 require(['game'], function (game) {
-    var configParam = {
+    var configParams = {
         canvasId: 'gameCanvas',
         wPer: 20,
         hPer: 20,
@@ -26,7 +26,7 @@ require(['game'], function (game) {
         playerSrc: 'player.json'
     };
 
-    game.init(configParam).then(function () {
+    game.init(configParams).then(function () {
         game.start();
     });
 });

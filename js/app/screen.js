@@ -2,6 +2,10 @@
  * Created by lzh on 2017/2/26.
  */
 
+/**
+ * Screen
+ * control the game screen, switch to different screens according to player's action
+ */
 define(['map',
     'gameConfig',
     'player',

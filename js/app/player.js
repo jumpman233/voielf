@@ -2,6 +2,10 @@
  * Created by lzh on 2017/2/26.
  */
 
+/**
+ * Player
+ * a object contains functions about drawing player's run/fall/jump/prepare animation, initialising data
+ */
 define(['gameConfig',
     'util',
     'state'],function (gc, util, state) {

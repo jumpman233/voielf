@@ -2,6 +2,10 @@
  * Created by lzh on 2017/2/26.
  */
 
+/**
+ * State
+ * global variable store, voice data resolve
+ */
 define(['gameConfig',
     'pitchdetect'],
     function (gc,pd) {

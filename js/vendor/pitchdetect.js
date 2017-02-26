@@ -22,6 +22,9 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
+/**
+ * get voice data
+ */
 define(['jquery'],function () {
     var audioContext = null;
     var isPlaying = false;
@@ -303,7 +306,7 @@ define(['jquery'],function () {
             window.requestAnimationFrame = window.webkitRequestAnimationFrame;
         rafID = window.requestAnimationFrame( updatePitch );
     }
-//volumn thing
+    //volumn thing
     function createAudioMeter(audioContext,clipLevel,averaging,clipLag) {
         var processor = audioContext.createScriptProcessor(512);
         processor.onaudioprocess = volumeAudioProcess;

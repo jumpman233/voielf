@@ -2,6 +2,10 @@
  * Created by lzh on 2017/2/26.
  */
 
+/**
+ * Util
+ * util functions
+ */
 define(['jquery'],function (jquery) {
     function Util() {
 

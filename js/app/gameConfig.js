@@ -2,6 +2,10 @@
  * Created by lzh on 2017/2/26.
  */
 
+/**
+ * GameConfig
+ * game config data init and store
+ */
 define(['jquery','util'],function (jquery,util) {
     function GameConfig() {
         this.canvasId = null;
@@ -19,6 +23,7 @@ define(['jquery','util'],function (jquery,util) {
     GameConfig.prototype = {
         constructor: GameConfig,
         getConfig: function (params) {
+            console.log(params);
             var defered = $.Deferred();
             var gc = this;
             var needP = ['canvasId', 'wPer', 'hPer', 'fps','mapSrc','playerSrc'];

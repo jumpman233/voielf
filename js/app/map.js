@@ -4,7 +4,7 @@
 
 /**
  * Map
- * a object contains the functions about drawing map, getting data, storing data
+ * a object contains functions about drawing map, getting data, storing data
  *
  */
 define(['jquery',

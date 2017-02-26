@@ -2,6 +2,10 @@
  * Created by lzh on 2017/2/26.
  */
 
+/**
+ * Game
+ * game init, game entrance
+ */
 define(['pitchdetect',
     'screen',
     'gameConfig',
@@ -13,6 +17,13 @@ define(['pitchdetect',
     }
 
     Game.prototype = {
+        /**
+         * get config data
+         * init state
+         * init screen |
+         *             | init map
+         *             | init player
+         */
         init: function (config) {
             var game = this;
 
