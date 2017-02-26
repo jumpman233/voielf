@@ -4,14 +4,15 @@
 
 /**
  * Map
- * a object contains the functions about map drawing and data getting
- * have map data
+ * a object contains the functions about drawing map, getting data, storing data
+ *
  */
 define(['jquery',
     'util',
     'gameConfig',
-    'screen'],
-    function (jquery, util, gc,screen) {
+    'screen',
+    'state'],
+    function (jquery, util, gc, screen, state) {
         function Map() {
             var map = this;
 
@@ -20,6 +21,9 @@ define(['jquery',
             map.length = 0;
         }
         Map.prototype = {
+            // there will be two parts inserted to the importing map,
+            // one is at the head of the map, another is at the end,
+            // they are both frank ground and the height is equal
             getMap: function () {
                 var map = this;
                 function resFunc(data) {
@@ -28,6 +32,16 @@ define(['jquery',
                         var item = data.block[i];
                         map.blockList.push(item);
                     }
+                    data.floor.push({
+                        "startG": -gc.wGrid,
+                        "widthG": gc.wGrid,
+                        "heightG": 6
+                    });
+                    data.floor.push({
+                       "startG": data.length,
+                        "widthG": gc.wGrid,
+                        "heightG": 6
+                    });
                     for(var i in data.floor){
                         var item = data.floor[i];
                         item.startC = item.startG * gc.wPer;
@@ -35,6 +49,9 @@ define(['jquery',
                         item.heightC = item.heightG * gc.hPer;
                         map.floorList.push(item);
                     }
+                    map.floorList.push({
+
+                    });
                     console.log(map);
                 }
                 return util.getData(map.src).then(resFunc);
@@ -48,28 +65,36 @@ define(['jquery',
 
                 return this.getMap();
             },
-            draw: function (pos) {
+            draw: function () {
                 var map = this;
-                map.drawFloor(pos);
+                map.drawFloor();
             },
-            drawFloor: function (pos) {
-                var pos = 0;
+            drawFloor: function () {
+                var pos = state.centerC - gc.width/2;
                 var ctx = gc.context;
                 var map = this;
                 var list = [];
                 for(var i in map.floorList){
-                    if(map.floorList[i].startC - pos >= 0 ||
-                    map.floorList[i].startC - pos <= gc.width){
-                        list.push(map.floorList[i]);
+                    var mapPart = map.floorList[i];
+                    //check if draw the map part
+                    if(mapPart.startC - pos >= 0 ||
+                    mapPart.startC - pos <= gc.width){
+                        list.push(mapPart);
+                    }
+                    //update ground height value of the screen center
+                    if(mapPart.startC - pos <= gc.width / 2 &&
+                        mapPart.startC + mapPart.widthC - pos >= gc.width / 2){
+                        state.groundHeightC = mapPart.heightC;
                     }
                 }
+                //start to draw floor
                 ctx.fillStyle = '#000';
                 for(var i in list){
                     var item = list[i];
                     ctx.strokeRect(item.startC - pos,
-                    gc.height - item.heightC,
-                    item.widthC,
-                    item.heightC);
+                        gc.height - item.heightC,
+                        item.widthC,
+                        item.heightC);
                 }
             }
         };

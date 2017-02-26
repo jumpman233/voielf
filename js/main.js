@@ -11,6 +11,7 @@ require.config({
         'util': './app/util',
         'screen': './app/screen',
         'gameConfig': './app/gameConfig',
+        'state': './app/state',
         'player': './app/player'
     }
 });

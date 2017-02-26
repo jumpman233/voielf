@@ -362,10 +362,14 @@ define(['jquery'],function () {
     }
 
 	function getVolume() {
-		return meter.volume;
+        if(meter && meter.volume){
+            return meter.volume;
+        }
     }
     function getPitch() {
-		return pitch;
+        if(pitch){
+            return pitch;
+        }
     }
 	return {
 		getVolume: getVolume,

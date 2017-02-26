@@ -4,13 +4,13 @@
 
 define(['map',
     'gameConfig',
-    'player'],
-    function (map,gc,player) {
+    'player',
+    'state'],
+    function (map, gc, player, state) {
         function Screen() {
             var screen = this;
 
             screen.dataSrc = null;
-            screen.pos = 0;
 
             screen.map = map;
             screen.player = player;
@@ -26,7 +26,8 @@ define(['map',
             draw: function () {
                 var screen = this;
                 var context = gc.context;
-                context.clearRect(0,0,screen.width,screen.height);
+                state.update();
+                context.clearRect(0,0,gc.width,gc.height);
                 screen.map.draw();
                 screen.player.draw();
             }

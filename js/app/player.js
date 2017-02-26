@@ -2,7 +2,9 @@
  * Created by lzh on 2017/2/26.
  */
 
-define(['gameConfig', 'util'],function (gc, util) {
+define(['gameConfig',
+    'util',
+    'state'],function (gc, util, state) {
    function Player() {
        var player = this;
 
@@ -41,6 +43,14 @@ define(['gameConfig', 'util'],function (gc, util) {
        player.isRun = false;
        player.isFall = false;
        player.isPrepare = true;
+
+       player.setP = false;
+       player.canJump = true;
+       player.isJumping = false;
+       player.jumpDis = 0;
+       player.maxJumpDis = 10;
+       player.jumpCd = 20;
+       player.jumpCdSave = 0;
    }
    Player.prototype = {
        constructor: Player,
@@ -100,8 +110,41 @@ define(['gameConfig', 'util'],function (gc, util) {
                player.prepareImgList.push(img);
            }
        },
+       resetPosition: function () {
+           var player = this;
+           player.y = gc.height - state.groundHeightC - player.heightC;
+       },
        draw: function () {
            var player = this;
+           //calculate the current player position
+           player.x = gc.width / 2 - player.widthC / 2;
+           if(!player.setP){
+               player.resetPosition();
+               player.setP = true;
+           }
+           if(player.jumpCdSave>=1){
+               player.jumpCdSave--;
+           }  else if(!player.isJumping){
+               player.canJump = true;
+           }
+           if(state.isUp && player.canJump){
+               player.maxJumpDis = state.up / 10;
+               player.y -= 3;
+               player.isJumping = true;
+           } else{
+               if(player.isJumping){
+                   player.canJump = false;
+               }
+               if(player.y + 1 >= gc.height - state.groundHeightC - player.heightC){
+                   player.y = gc.height - state.groundHeightC - player.heightC;
+                   player.isJumping = false;
+                   state.go = false;
+               } else{
+                   player.y += 1;
+                   player.jumpCdSave = player.jumpCd;
+                   state.go = true;
+               }
+           }
            if(player.isRun){
                player.drawRun();
            } else if(player.isFall){

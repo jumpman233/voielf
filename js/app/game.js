@@ -4,8 +4,9 @@
 
 define(['pitchdetect',
     'screen',
-    'gameConfig'],function (pitchdetect, screen, gc) {
-    function Game(params) {
+    'gameConfig',
+    'state'],function (pitchdetect, screen, gc,state) {
+    function Game() {
         var game = this;
 
         game.screen = screen;
@@ -17,6 +18,7 @@ define(['pitchdetect',
 
             return gc
                 .getConfig(config)
+                .then(state.init())
                 .then(game.screen.init());
         },
         start: function () {

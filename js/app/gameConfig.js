@@ -5,11 +5,16 @@
 define(['jquery','util'],function (jquery,util) {
     function GameConfig() {
         this.canvasId = null;
+        this.context = null;
         this.width = null;
         this.height = null;
-        this.wGrid = null;
-        this.hGrid = null;
-        this.fps = null;
+        this.wPer = 0;
+        this.hPer = 0;
+        this.wGrid = 0;
+        this.hGrid = 0;
+        this.fps = 0;
+        this.playerSrc = '';
+        this.mapSrc = '';
     }
     GameConfig.prototype = {
         constructor: GameConfig,
