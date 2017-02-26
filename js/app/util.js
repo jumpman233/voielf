@@ -9,7 +9,7 @@ define(['jquery'],function (jquery) {
     Util.prototype = {
         constructor: Util,
         baseJsonUrl: 'json/',
-        getData: function (src, callback) {
+        getData: function (src) {
             var util = this;
             if(undefined === src){
                 throw Error('Util getData(): src is not defined!');
@@ -50,5 +50,5 @@ define(['jquery'],function (jquery) {
         }
     };
 
-    return Util;
+    return new Util();
 });

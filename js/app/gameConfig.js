@@ -16,14 +16,15 @@ define(['jquery','util'],function (jquery,util) {
         getConfig: function (params) {
             var defered = $.Deferred();
             var gc = this;
-            var needP = ['canvasId', 'wPer', 'hPer', 'fps','mapSrc'];
-            util.prototype.checkParams(needP, params, 'GameConfig getConfig');
+            var needP = ['canvasId', 'wPer', 'hPer', 'fps','mapSrc','playerSrc'];
+            util.checkParams(needP, params, 'GameConfig getConfig');
 
             gc.canvasId = params.canvasId;
             gc.wPer = params.wPer;
             gc.hPer = params.hPer;
             gc.fps = params.fps;
             gc.mapSrc = params.mapSrc;
+            gc.playerSrc = params.playerSrc;
 
             gc.context = $('#' + gc.canvasId)[0].getContext('2d');
             gc.width = gc.context.canvas.width;

@@ -10,7 +10,8 @@ require.config({
         'map': './app/map',
         'util': './app/util',
         'screen': './app/screen',
-        'gameConfig': './app/gameConfig'
+        'gameConfig': './app/gameConfig',
+        'player': './app/player'
     }
 });
 
@@ -20,7 +21,8 @@ require(['game'], function (game) {
         wPer: 20,
         hPer: 20,
         fps: 50,
-        mapSrc: 'map.json'
+        mapSrc: 'map.json',
+        playerSrc: 'player.json'
     };
 
     game.init(configParam).then(function () {

@@ -1,0 +1,11 @@
+{
+  "widthG": 6,
+  "heightG": 6,
+  "standImgSrc": "img/player/stand/stand.png",
+  "runImgDir": "img/player/run",
+  "runImgCount": 12,
+  "fallImgDir": "img/player/fall",
+  "fallImgCount": 12,
+  "prepareImgDir": "img/player/prepare",
+  "prepareImgCount": 3
+}

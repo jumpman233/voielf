@@ -37,7 +37,7 @@ define(['jquery',
                     }
                     console.log(map);
                 }
-                return util.prototype.getData(map.src).then(resFunc);
+                return util.getData(map.src).then(resFunc);
             },
             init: function () {
                 var map = this;
@@ -66,7 +66,7 @@ define(['jquery',
                 ctx.fillStyle = '#000';
                 for(var i in list){
                     var item = list[i];
-                    ctx.fillRect(item.startC - pos,
+                    ctx.strokeRect(item.startC - pos,
                     gc.height - item.heightC,
                     item.widthC,
                     item.heightC);
