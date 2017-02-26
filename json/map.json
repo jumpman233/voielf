@@ -1,0 +1,19 @@
+{
+  "length": 200,
+  "floor": [{
+    "startG": 0,
+    "widthG": 20,
+    "heightG": 4
+  },{
+    "startG": 21,
+    "widthG": 20,
+    "heightG": 6
+  },{
+    "startG": 42,
+    "widthG": 20,
+    "heightG": 8
+  }],
+  "block": [{
+  "width": 1,
+  "height": 1}]
+}
